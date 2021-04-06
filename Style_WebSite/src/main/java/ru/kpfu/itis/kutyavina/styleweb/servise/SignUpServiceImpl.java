@@ -1,6 +1,7 @@
 package ru.kpfu.itis.kutyavina.styleweb.servise;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.kpfu.itis.kutyavina.styleweb.dao.UsersRepository;
 import ru.kpfu.itis.kutyavina.styleweb.dto.UserForm;
@@ -14,12 +15,15 @@ public class SignUpServiceImpl implements SignUpService {
     @Autowired
     private UsersRepository ur;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public void SignUp(UserForm userForm) {
         System.out.println(userForm);
         User user = User.builder()
                 .email(userForm.getEmail())
-                .password(Integer.toString(userForm.getPassword().hashCode()))
+                .password(passwordEncoder.encode(userForm.getPassword()))
                 .name(userForm.getName()).build();
         ur.save(user);
     }

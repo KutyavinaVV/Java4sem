@@ -1,9 +1,6 @@
 package ru.kpfu.itis.kutyavina.styleweb.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
@@ -19,8 +16,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NonNull
     private String name;
+    @NonNull
     private String email;
+    @NonNull
     private String password;
 
 }
