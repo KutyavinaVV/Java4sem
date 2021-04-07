@@ -2,6 +2,7 @@ package ru.kpfu.itis.kutyavina.styleweb.models;
 
 import lombok.*;
 import org.springframework.data.repository.cdi.Eager;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Component
 public class User {
 
     @Id

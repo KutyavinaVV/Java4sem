@@ -1,13 +1,16 @@
 package ru.kpfu.itis.kutyavina.styleweb.security.details;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 import ru.kpfu.itis.kutyavina.styleweb.models.User;
 
 import java.util.Collection;
 import java.util.Collections;
 
+@Component
 public class UserDetailsImpl implements UserDetails {
 
     private User user;
@@ -29,7 +32,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getEmail();
+        return user.getName();
     }
 
     @Override
