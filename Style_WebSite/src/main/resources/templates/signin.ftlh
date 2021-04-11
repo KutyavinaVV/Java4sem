@@ -20,6 +20,10 @@
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                 </div>
+                <div class="form-check form_sing">
+                    <input type="checkbox" class="form-check-input" name="remember-me" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                </div>
                 <div class="btn_sing"><button type="submit" class="btn btn-primary">Submit</button>
                     <small class="form-text text-muted"> <a href="/signup" class="sing_href">Зарегистрируйтесь</a>, если вы впервые на нашем сайте.</small> </div>
             </div>

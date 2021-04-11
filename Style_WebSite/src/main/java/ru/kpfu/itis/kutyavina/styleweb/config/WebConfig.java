@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import ru.kpfu.itis.kutyavina.styleweb.logging.LoggingAspect;
 
 import java.util.logging.Logger;
@@ -22,5 +21,5 @@ public class WebConfig {
     public Logger logger() {
         return Logger.getLogger(LoggingAspect.class.getName());
     }
-    
+
 }
