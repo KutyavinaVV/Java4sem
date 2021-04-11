@@ -12,16 +12,6 @@ import java.util.logging.Logger;
 @SpringBootApplication
 public class StyleApplication {
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public Logger logger() {
-        return Logger.getLogger(LoggingAspect.class.getName());
-    }
-
     public static void main(String[] args) {
         SpringApplication.run(StyleApplication.class, args);
     }

@@ -12,4 +12,5 @@ public class ProfileController {
     public String getProfilePage() {
         return "profile";
     }
+
 }

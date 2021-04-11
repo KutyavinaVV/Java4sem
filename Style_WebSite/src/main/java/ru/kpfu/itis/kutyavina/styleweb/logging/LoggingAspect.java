@@ -7,7 +7,9 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+import ru.kpfu.itis.kutyavina.styleweb.security.details.UserDetailsImpl;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +29,8 @@ public class LoggingAspect {
     @After("pointCutMethods()")
     public void logMethodCall(JoinPoint joinPoint) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String method = joinPoint.getSignature().getName() + " " + authentication.getName();
+        String name = authentication.getName();
+        String method = joinPoint.getSignature().getName() + " " + name;
         logger.log(Level.INFO, method);
     }
 }
