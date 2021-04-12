@@ -35,6 +35,14 @@ public class UserDetailsImpl implements UserDetails {
         return user.getName();
     }
 
+    public String getEmail() {
+        return user.getEmail();
+    }
+
+    public Long getId() {
+        return user.getId();
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -48,6 +56,17 @@ public class UserDetailsImpl implements UserDetails {
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
+    }
+
+    public void setName(String name) {
+        user.setName(name);
+    }
+
+    @Override
+    public String toString() {
+        return "UserDetailsImpl{" +
+                "user=" + user +
+                '}';
     }
 
     @Override
