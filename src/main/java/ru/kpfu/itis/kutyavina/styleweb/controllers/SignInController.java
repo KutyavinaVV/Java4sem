@@ -9,7 +9,6 @@ import javax.annotation.security.PermitAll;
 @Controller
 public class SignInController {
 
-    //todo: bad password
     @GetMapping("/signin")
     @PermitAll
     public String getSignInPage(Authentication authentication) {

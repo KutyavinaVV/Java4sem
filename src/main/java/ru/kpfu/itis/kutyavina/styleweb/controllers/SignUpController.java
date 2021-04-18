@@ -18,7 +18,6 @@ public class SignUpController {
     @Autowired
     SignUpService signUpService;
 
-    //todo: validation message
     @PermitAll
     @GetMapping("/signup")
     public String getSingUpPage(Authentication authentication) {

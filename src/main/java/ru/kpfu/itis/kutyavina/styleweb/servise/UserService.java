@@ -9,6 +9,6 @@ public interface UserService {
 
     User updateIdol(String name, UserDetailsImpl userDetails);
 
-    void delete(Long id);
+    boolean delete(Long id, String delete);
 }
 

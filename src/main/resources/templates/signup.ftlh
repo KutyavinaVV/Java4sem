@@ -9,6 +9,9 @@
 <@navbar.navbar />
 <div class="main-container">
     <div class="right-background"> <br> <br>
+        <#if error??>
+            <div>${error}</div>
+        </#if>
         <form  action="/signup" method='POST'>
             <div class="sing_container">
                 <small class="form-text text-muted form_sing"> </small>

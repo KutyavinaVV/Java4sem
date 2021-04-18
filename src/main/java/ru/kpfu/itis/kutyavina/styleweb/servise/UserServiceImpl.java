@@ -34,8 +34,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(Long id) {
-        User deleteUser = usersRepository.findById(id).orElseThrow(IllegalAccessError::new);
-        usersRepository.delete(deleteUser);
+    public boolean delete(Long id, String delete) {
+        if(delete.toLowerCase().equals("yes")) {
+            User deleteUser = usersRepository.findById(id).orElseThrow(IllegalAccessError::new);
+            usersRepository.delete(deleteUser);
+            return true;
+        }
+        return true;
     }
 }
