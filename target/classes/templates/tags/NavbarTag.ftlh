@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -25,9 +25,9 @@
                     Clothes
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-                    <a class="dropdown-item" href="">jeans</a>
-                    <a class="dropdown-item" href="">outerwear</a>
-                    <a class="dropdown-item" href="">blazer</a>
+                    <a class="dropdown-item" href="/product/jeans">jeans</a>
+                    <a class="dropdown-item" href="/product/outerwear">outerwear</a>
+                    <a class="dropdown-item" href="/product/blazer">blazer</a>
                     <a class="dropdown-item" href="#">swimsuit</a>
                 </div>
             </li>
@@ -35,14 +35,13 @@
                 <a class="nav-link" href="">About</a>
             </li>
 
-<#--            <li class="nav-item">-->
-<#--                <c:if test="${pageContext.request.getSession().getAttribute(\"User\") == null}">-->
-<#--                <a class="nav-link" href="${pageContext.request.contextPath}/signin">Sign in</a>-->
-<#--                </c:if>-->
-<#--                <c:if test="${pageContext.request.getSession().getAttribute(\"User\") != null}">-->
-<#--                <a class="nav-link" href="${pageContext.request.contextPath}/profile">Profile</a>-->
-<#--                </c:if>-->
-<#--            </li>-->
+            <#if auth??>
+                <a class="nav-link" href="/profile/">Profile</a>
+            </#if>
+
+            <#if !auth??>
+                <a class="nav-link" href="/signin">Sign in</a>
+            </#if>
         </ul>
     </div>
 </nav>
