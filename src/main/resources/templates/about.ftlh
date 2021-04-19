@@ -1,13 +1,14 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="navbar" tagdir="/WEB-INF/tags" %>
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@include file="_header.jsp"%>
+<#import "__header.ftlh" as header/>
+<#import "__scrirts.ftlh" as script/>
+<#import "tags/CarouselTag.ftlh" as carusel/>
+<#import "tags/NavbarTag.ftlh" as navbar>
+<@header.header />
 <body>
-<%@include file="_script.jsp"%>
-<navbar:NavbarTag/>
+<@script.script />
+<@navbar.navbar />
 <div class="row">
     <div class="card col-sm-4" style="width: 18rem;">
-        <img class="card-img-top" src="${pageContext.request.contextPath}/images/avatar.jpg" alt="Card image cap">
+        <img class="card-img-top" src="/images/avatar.jpg" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">Диана Милканова</h5>
             <p class="card-text">описание которого нет но которое здесь  точно должно быть</p>
@@ -45,19 +46,18 @@
                 <input type="hidden" name="action" value="data"/>
             </form>
             <br>
-            <c:if test="${exception != null}">
+            <#if exception??>
                 <script> showMessage('\'${exception}\'')</script>
-            </c:if>
-            <c:if test="${appo != null}">
+            </#if>
+            <#if appo??>
                 <script> showMessage('\'${appo}\'')</script>
-            </c:if>
+            </#if>
             <br> <form method="POST">
-                <c:if test="${post != null}">
-
-                    <c:forEach var="time" items="${time}">
+                <#if post??>
+                    <#list times as time>
                         <input type="button" name="time" class="btn btn-primary" value="<c:out value="${time}"/>" onclick="ShowDiv('\'<c:out value="${time}"/>\'')" />
-                    </c:forEach>
-                </c:if>
+                    </#list>
+                </#if>
                 <br>
                 <div id="myDiv" style="display:none;" class="answer_list" >
                     <input type="hidden" id="myTime" name="myTime" value=""/>
