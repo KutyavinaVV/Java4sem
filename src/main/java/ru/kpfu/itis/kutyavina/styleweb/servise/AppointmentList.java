@@ -31,4 +31,9 @@ public class AppointmentList {
         timeList.add("18:00");
         return timeList;
     }
+
+//    public String getAllName() {
+//        AppointmentList al = new AppointmentList();
+//        return al.get(name);
+//    }
 }

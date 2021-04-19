@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="product")
@@ -24,6 +25,13 @@ public class Product {
     private String link;
     private String description;
     private String composition;
+
+    @ManyToMany
+    @JoinTable(name = "product_capsule",
+            joinColumns = {@JoinColumn(name="product_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "capsule_id", referencedColumnName = "id")}
+            )
+    private List<Capsule> capsuleList;
 
     @Override
     public String toString() {
