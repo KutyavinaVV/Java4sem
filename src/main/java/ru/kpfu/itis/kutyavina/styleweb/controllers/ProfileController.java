@@ -29,7 +29,7 @@ public class ProfileController {
     @PostMapping("/changename")
     @PreAuthorize("isAuthenticated()")
     public String changeName(@RequestBody String name, @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        userService.updateIdol(name, userDetails);
+        userService.updateUser(name, userDetails);
         return "redirect: ";
     }
 

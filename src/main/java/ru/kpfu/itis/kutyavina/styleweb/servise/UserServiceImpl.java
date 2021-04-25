@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
     AuthenticationManager authenticationManager;
 
     @Override
-    public User updateIdol(String data, UserDetailsImpl userDetails) {
+    public User updateUser(String data, UserDetailsImpl userDetails) {
         String name = data.split("=")[1];
         User user = usersRepository.findById(userDetails.getId()).orElseThrow(IllegalAccessError::new);
         user.setName(name);
@@ -42,4 +42,11 @@ public class UserServiceImpl implements UserService {
         }
         return true;
     }
+
+    @Override
+    public User findUser(Long id) {
+        return usersRepository.findById(id).orElseThrow(IllegalAccessError::new);
+    }
+
+
 }

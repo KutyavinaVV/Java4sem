@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface UserService {
 
-    User updateIdol(String name, UserDetailsImpl userDetails);
-
+    User updateUser(String name, UserDetailsImpl userDetails);
     boolean delete(Long id, String delete);
+    User findUser(Long id);
 }
 

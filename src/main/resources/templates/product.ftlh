@@ -29,8 +29,8 @@
                                 Создать новую..
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <form method="post">
-                                    <input type="text" name="nameCapsule" placeholder="name">
+                                <form method="post" action="/capsule/create">
+                                    <input type="text" name="name" placeholder="name">
                                 </form>
                             </div>
                             <#if capsules??>

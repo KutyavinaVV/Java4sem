@@ -12,6 +12,6 @@ public class SignInController {
     @GetMapping("/signin")
     @PermitAll
     public String getSignInPage(Authentication authentication) {
-        return authentication == null ?  "signin" :  "profile";
+        return authentication == null ?  "signin" :  "redirect:profile";
     }
 }

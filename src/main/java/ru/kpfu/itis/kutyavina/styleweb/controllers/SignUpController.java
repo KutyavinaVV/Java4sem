@@ -34,7 +34,7 @@ public class SignUpController {
             return "signup";
         }
         signUpService.SignUp(userForm);
-        return "redirect:/signin";
+        return "redirect:signin";
     }
 
 }
