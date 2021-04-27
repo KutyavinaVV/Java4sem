@@ -35,7 +35,7 @@
                             </div>
                             <#if capsules??>
                                 <#list capsules as capsul>
-                                    <a class="dropdown-item"> ${capsul.getName()} </a>
+                                    <a class="dropdown-item capsule" data-capsule-id="${capsul.getId()}" data-product-id="${product.getId()}" > ${capsul.getName()} </a>
                                 </#list>
                             </#if>
                         </div>
@@ -47,4 +47,30 @@
     <#if exception??>
         <script>showMessage("${exception}")</script>
     </#if>
+
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+            crossorigin="anonymous"></script>
+
+    <script>
+
+        const addProductInList = ({capsuleId, productId }) => {
+            console.log(capsuleId, productId)
+            $.ajax({
+                url: '/add',
+                type: 'POST',
+                data: {
+                    capsuleId: capsuleId,
+                    productId: productId
+                }
+            });
+        }
+
+        $('.capsule').on('click', (event) => {
+            addProductInList(event.target.dataset);
+        });
+
+
+    </script>
 </div>

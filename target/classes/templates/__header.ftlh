@@ -1,6 +1,6 @@
 <#macro header>
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -72,7 +72,7 @@
             box-shadow: 0 0 10px rgba(0,0,0,0.5)
         }
     </style>
-
+    <script type="text/javascript" th:src="@{/productScript.js}"> </script>
     <script>
 
     </script>

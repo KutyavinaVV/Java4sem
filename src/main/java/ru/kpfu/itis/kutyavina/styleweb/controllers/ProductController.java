@@ -26,9 +26,12 @@ public class ProductController {
     CapsuleService capsuleService;
 
     @GetMapping("/product/{type}")
-    public String getProductPage(@PathVariable String type, ModelMap map) {
+    public String getProductPage(@PathVariable String type, ModelMap map, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (!authentication.getName().equals("anonymousUser")) map.addAttribute("auth", "");
+        if (!authentication.getName().equals("anonymousUser")) {
+            map.addAttribute("auth", "");
+            map.addAttribute("capsules", capsuleService.getCapsules(userDetails.getId()));
+        }
         map.addAttribute("products", productService.getProductByType(type));
         return "product";
     };
@@ -36,7 +39,6 @@ public class ProductController {
     @PostMapping("/capsule/create")
     public String createCapsule(CapsuleForm capsuleForm,  @AuthenticationPrincipal UserDetailsImpl userDetails, HttpServletRequest request) {
         capsuleService.createCapsule(capsuleForm, userDetails.getId());
-
         String referer = request.getHeader("Referer");
         return "redirect:"+ referer;
     }

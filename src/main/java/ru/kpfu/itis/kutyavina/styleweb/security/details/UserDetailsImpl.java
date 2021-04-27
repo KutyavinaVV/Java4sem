@@ -5,10 +5,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+import ru.kpfu.itis.kutyavina.styleweb.models.Capsule;
 import ru.kpfu.itis.kutyavina.styleweb.models.User;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Component
 public class UserDetailsImpl implements UserDetails {
@@ -41,6 +43,10 @@ public class UserDetailsImpl implements UserDetails {
 
     public Long getId() {
         return user.getId();
+    }
+
+    public List<Capsule> getCapsule() {
+        return user.getCapsuleList();
     }
 
     @Override

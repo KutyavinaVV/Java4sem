@@ -10,6 +10,8 @@ import ru.kpfu.itis.kutyavina.styleweb.dto.CapsuleForm;
 import ru.kpfu.itis.kutyavina.styleweb.models.Capsule;
 import ru.kpfu.itis.kutyavina.styleweb.models.User;
 
+import java.util.List;
+
 @Service
 public class CapsuleServiceImpl implements CapsuleService {
 
@@ -18,6 +20,9 @@ public class CapsuleServiceImpl implements CapsuleService {
 
     @Autowired
     UsersRepository usersRepository;
+
+    @Autowired
+    UserService userService;
 
     @Override
     public Capsule createCapsule(CapsuleForm capsuleForm, Long userId) {
@@ -29,5 +34,10 @@ public class CapsuleServiceImpl implements CapsuleService {
     @Override
     public Capsule removeCapsule(Long id) {
         return null;
+    }
+
+    @Override
+    public List<Capsule> getCapsules(Long id) {
+        return capsuleRepository.findCapsulesByOwner(userService.findUser(id));
     }
 }
