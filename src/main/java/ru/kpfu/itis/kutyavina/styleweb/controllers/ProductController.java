@@ -29,7 +29,7 @@ public class ProductController {
     public String getProductPage(@PathVariable String type, ModelMap map, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!authentication.getName().equals("anonymousUser")) {
-            map.addAttribute("auth", "");
+            map.addAttribute("user", "");
             map.addAttribute("capsules", capsuleService.getCapsules(userDetails.getId()));
         }
         map.addAttribute("products", productService.getProductByType(type));

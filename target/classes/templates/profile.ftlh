@@ -59,77 +59,91 @@
     </div>
 </div>
 <div class="row">
-<#--    <c:forEach var="capsule" items="${capsules}">-->
-<#--        <div class="card col-sm-4" style="width: 18rem;">-->
-<#--            <c:if test="${capsule.getProducts().size() != 0}">-->
-<#--                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">-->
-<#--                    <ol class="carousel-indicators">-->
-<#--                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>-->
-<#--                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>-->
-<#--                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>-->
-<#--                    </ol>-->
-<#--                    <div class="carousel-inner">-->
-<#--                        <c:forEach var="product" items="${capsule.getProducts()}">-->
-<#--                            <c:if test="${capsule.getProducts().indexOf(product) == 0}">-->
-<#--                                <div class="carousel-item active">-->
-<#--                                    <img src="${pageContext.request.contextPath}<c:out value="${product.getPath()}" />" class="d-block w-100" alt="...">-->
-<#--                                </div>-->
-<#--                            </c:if>-->
-<#--                            <c:if test="${capsule.getProducts().indexOf(product) != 0}">-->
-<#--                                <div class="carousel-item">-->
-<#--                                    <img src="${pageContext.request.contextPath}<c:out value="${product.getPath()}" />" class="d-block w-100" alt="...">-->
-<#--                                </div>-->
-<#--                            </c:if>-->
-<#--                        </c:forEach>-->
-<#--                    </div>-->
-<#--                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">-->
-<#--                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<#--                        <span class="sr-only">Previous</span>-->
-<#--                    </a>-->
-<#--                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">-->
-<#--                        <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<#--                        <span class="sr-only">Next</span>-->
-<#--                    </a>-->
-<#--                </div>-->
+    <#list capsules as capsule>
+        <div class="card col-sm-4" style="width: 18rem;">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <#list capsule.getProductList() as product>
+                            <div class="carousel-active">
+                                <img src="${product.getPath()}" />
+                            </div>
+                            <#break>
+                        </#list>
+                        <#list capsule.getProductList() as product>
+                            <div class="carousel-item">
+                                <img src="${product.getPath()}" />
+                            </div>
+                            <#break>
+                        </#list>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
 
-<#--            </c:if>-->
-<#--            <div class="card-body">-->
-<#--                <h5 class="card-title"><c:out value="${capsule.getName()}"/></h5>-->
-<#--            </div>-->
-<#--            <c:forEach var="product" items="${capsule.getProducts()}">-->
-<#--                <div class="card-body">-->
-<#--                    <p class="card-text"><c:out value="${product.getName()}" /></p>-->
-<#--                    <form action="${pageContext.request.contextPath}/capsule" method="post">-->
-<#--                        <p><input type="image" src="${pageContext.request.contextPath}/images/trash.png" alt="ОК"></p>-->
-<#--                        <input type="hidden" name="idCap" value="<c:out value="${capsule.getId()}"/>">-->
-<#--                        <input type="hidden" name="idProd" value="<c:out value="${product.getId()}"/>">-->
-<#--                        <input type="hidden" name="action" value="deleteProd"/>-->
-<#--                    </form>-->
-<#--                </div>-->
-<#--            </c:forEach>-->
-<#--            <div class="card-body">-->
-<#--                <div class="dropdown update">-->
-<#--                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<#--                        update name-->
-<#--                    </a>-->
-<#--                    -->
-<#--                </div>-->
-<#--            </div>-->
-<#--            <div class="card-body">-->
-<#--                <div class="dropdown update">-->
-<#--                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<#--                        delete-->
-<#--                    </a>-->
-<#--                    <div class="dropdown-menu update" aria-labelledby="dropdownMenuLink3">-->
-<#--                        <form action="${pageContext.request.contextPath}/capsule" method="post" >-->
-<#--                            <input type="text" name="deleteCap" placeholder="Say Yes">-->
-<#--                            <input type="hidden" name="action" value="deleteCap"/>-->
-<#--                            <input type="hidden" name="idCap" value="<c:out value="${capsule.getId()}"/>">-->
-<#--                        </form>-->
-<#--                    </div>-->
-<#--                </div>-->
-<#--            </div>-->
-<#--        </div>-->
-<#--    </c:forEach>-->
+            <div class="card-body">
+                <h5 class="card-title">${capsule.getName()}</h5>
+            </div>
+            <#list capsule.getProductList() as product>
+                <div class="card-body" id="${product.getId()}">
+                    <p class="card-text"> ${product.getName()} </p>
+                        <p><input class="deleteItem" type="image" src="/images/trash.png" alt="ОК" data-capsule-id="${capsule.getId()}" data-product-id="${product.getId()}"></p>
+                </div>
+            </#list>
+            <div class="card-body">
+                <div class="dropdown update">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        update name
+                    </a>
+
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="dropdown update">
+                    <a class="btn btn-secondary dropdown-toggle remove" href="#" role="button" id="dropdownMenuLink3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        delete
+                    </a>
+                    <div class="dropdown-menu update" aria-labelledby="dropdownMenuLink3">
+                        <form action="/capsule" method="post" >
+                            <input type="text" name="deleteCap" placeholder="Say Yes">
+                            <input type="hidden" name="action" value="deleteCap"/>
+                            <input type="hidden" name="idCap" value="<c:out value="${capsule.getId()}"/>">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </#list>
 </div>
+
+<script>
+
+    const deleteProductFromList = ({ capsuleId, productId }) => {
+        $.ajax({
+            url: '/product/remove',
+            type: 'POST',
+            data: {
+                capsuleId: capsuleId,
+                productId: productId
+            }
+        });
+        $(`#` + productId).remove();
+    }
+
+    $('.deleteItem').on('click', ( event ) => {
+        deleteProductFromList(event.target.dataset);
+    });
+
+
+</script>
 </body>

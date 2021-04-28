@@ -35,11 +35,11 @@
                 <a class="nav-link" href="">About</a>
             </li>
 
-            <#if auth??>
+            <#if user??>
                 <a class="nav-link" href="/profile/">Profile</a>
             </#if>
 
-            <#if !auth??>
+            <#if !user??>
                 <a class="nav-link" href="/signin">Sign in</a>
             </#if>
         </ul>

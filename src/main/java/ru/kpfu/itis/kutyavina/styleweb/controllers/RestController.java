@@ -15,9 +15,16 @@ public class RestController {
     @Autowired
     ProductService productService;
 
-    @PostMapping("/add")
+    @PostMapping("/product/add")
     @ResponseBody
     public void addProductInCap(@RequestParam Map<String,String> params ) {
         productService.addProductInList(Long.parseLong(params.get("capsuleId")),Long.parseLong(params.get("productId")));
     }
+
+    @PostMapping("/product/remove")
+    @ResponseBody
+    public void removeProductFromCap(@RequestParam Map<String,String> params ) {
+        productService.removeProductFromList(Long.parseLong(params.get("capsuleId")),Long.parseLong(params.get("productId")));
+    }
+
 }

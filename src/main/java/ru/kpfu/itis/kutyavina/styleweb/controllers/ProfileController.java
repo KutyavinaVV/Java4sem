@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import ru.kpfu.itis.kutyavina.styleweb.logging.Logging;
 import ru.kpfu.itis.kutyavina.styleweb.security.details.UserDetailsImpl;
+import ru.kpfu.itis.kutyavina.styleweb.servise.CapsuleService;
 import ru.kpfu.itis.kutyavina.styleweb.servise.UserService;
 
 @Controller
@@ -17,12 +18,15 @@ public class ProfileController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    CapsuleService capsuleService;
+
     @GetMapping("")
     @Logging
     @PreAuthorize("isAuthenticated()")
     public String getProfilePage(ModelMap modelMap, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         modelMap.addAttribute("user", userDetails);
-        System.out.println(userDetails.toString());
+        modelMap.addAttribute("capsules", capsuleService.getCapsules(userDetails.getId()));
         return "profile";
     }
 

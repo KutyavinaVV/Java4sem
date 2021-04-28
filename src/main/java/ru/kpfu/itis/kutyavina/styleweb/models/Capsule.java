@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name="сapsule")
@@ -30,4 +32,29 @@ public class Capsule {
     @ManyToMany(mappedBy = "capsuleList")
     private List<Product> productList;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Capsule capsule = (Capsule) o;
+        return Objects.equals(id, capsule.id) &&
+                Objects.equals(name, capsule.name) &&
+                Objects.equals(owner, capsule.owner) &&
+                Objects.equals(productList, capsule.productList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, owner, productList);
+    }
+
+    @Override
+    public String toString() {
+        return "Capsule{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", owner=" + owner +
+                ", productList=" + productList +
+                '}';
+    }
 }

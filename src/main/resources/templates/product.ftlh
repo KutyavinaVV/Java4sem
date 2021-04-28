@@ -19,7 +19,7 @@
             </ul>
             <div class="card-body">
                 <a href="${product.getLink()}" class="card-link">Ссылка на магазин</a>
-                <#if auth??>
+                <#if user??>
                     <div class="dropdown">
                         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Добавить в список
@@ -56,9 +56,8 @@
     <script>
 
         const addProductInList = ({capsuleId, productId }) => {
-            console.log(capsuleId, productId)
             $.ajax({
-                url: '/add',
+                url: '/product/add',
                 type: 'POST',
                 data: {
                     capsuleId: capsuleId,
