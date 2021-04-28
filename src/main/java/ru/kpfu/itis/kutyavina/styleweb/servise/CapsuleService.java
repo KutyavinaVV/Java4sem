@@ -8,6 +8,7 @@ import java.util.List;
 public interface CapsuleService {
 
     Capsule createCapsule(CapsuleForm capsuleForm, Long userId);
-    Capsule removeCapsule(Long id);
+    void removeCapsule(Long id, String say);
+    Capsule updateName(String name, Long id);
     List<Capsule> getCapsules(Long id);
 }

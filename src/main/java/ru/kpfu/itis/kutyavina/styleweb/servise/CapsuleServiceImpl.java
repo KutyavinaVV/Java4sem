@@ -32,8 +32,18 @@ public class CapsuleServiceImpl implements CapsuleService {
     }
 
     @Override
-    public Capsule removeCapsule(Long id) {
-        return null;
+    public void removeCapsule(Long id, String say) {
+        if(!say.toLowerCase().equals("yes")) return;
+        Capsule capsule = capsuleRepository.findById(id).orElseThrow(IllegalAccessError::new);
+        capsuleRepository.delete(capsule);
+    }
+
+    @Override
+    public Capsule updateName(String name, Long id) {
+        Capsule capsule = capsuleRepository.findById(id).orElseThrow(IllegalAccessError::new);
+        capsule.setName(name);
+        capsuleRepository.save(capsule);
+        return capsule;
     }
 
     @Override

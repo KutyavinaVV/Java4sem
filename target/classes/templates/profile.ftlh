@@ -105,6 +105,12 @@
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         update name
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink20">
+                        <form method="post" action="/capsule/updatename">
+                            <input type="text" name="name"  placeholder="name">
+                            <input type="hidden" value="${capsule.getId()}" name="capsuleId"  placeholder="name">
+                        </form>
+                    </div>
 
                 </div>
             </div>
@@ -114,10 +120,9 @@
                         delete
                     </a>
                     <div class="dropdown-menu update" aria-labelledby="dropdownMenuLink3">
-                        <form action="/capsule" method="post" >
-                            <input type="text" name="deleteCap" placeholder="Say Yes">
-                            <input type="hidden" name="action" value="deleteCap"/>
-                            <input type="hidden" name="idCap" value="<c:out value="${capsule.getId()}"/>">
+                        <form action="/capsule/remove" method="post" >
+                            <input type="text" name="say" placeholder="Say Yes">
+                            <input type="hidden" value="${capsule.getId()}" name="capsuleId">
                         </form>
                     </div>
                 </div>
