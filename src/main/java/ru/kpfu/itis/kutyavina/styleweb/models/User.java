@@ -1,5 +1,7 @@
 package ru.kpfu.itis.kutyavina.styleweb.models;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -25,10 +27,15 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "owner")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Capsule> capsuleList;
 
     @OneToMany(mappedBy = "client")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Appointment> appointments;
+
+    @ManyToMany(mappedBy = "favourFor")
+    private List<Title> favorites;
 
     @Override
     public String toString() {
