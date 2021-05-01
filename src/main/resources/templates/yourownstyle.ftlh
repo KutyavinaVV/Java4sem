@@ -1,13 +1,15 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="navbar" tagdir="/WEB-INF/tags" %>
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@include file="../_header.jsp"%>
+<#import "__header.ftlh" as header/>
+<#import "__scrirts.ftlh" as script/>
+<#import "tags/CarouselTag.ftlh" as carusel/>
+<#import "tags/NavbarTag.ftlh" as navbar>
+<#import "tags/favorite.ftlh" as favorite>
+<@header.header />
 <body>
-<%@include file="../_script.jsp"%>
-<navbar:NavbarTag/>
+<@script.script />
+<@navbar.navbar />
 <div class="main-container row">
     <div class="right-background2 col-sm-9"> <br> <br>
-        <navbar:favorite/>
+        <@favorite.favorite />
         <div class="text-container ">
             <h3>Для начала давайте с вами определимся, что такое стиль? </h3>
             <p align="justify"> <span>Стиль</span> - это некая совокупность признаков, по которым можно разделить множество вещей, комплектов и

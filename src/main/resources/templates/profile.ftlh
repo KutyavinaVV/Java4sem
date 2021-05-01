@@ -136,7 +136,7 @@
     const deleteProductFromList = ({ capsuleId, productId }) => {
         $.ajax({
             url: '/product/remove',
-            type: 'POST',
+            type: 'DELETE',
             data: {
                 capsuleId: capsuleId,
                 productId: productId

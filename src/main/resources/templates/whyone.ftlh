@@ -1,14 +1,15 @@
-<#import "../__header.ftlh" as header/>
-<#import "../__scrirts.ftlh" as script/>
-<#import "../tags/CarouselTag.ftlh" as carusel/>
-<#import "../tags/NavbarTag.ftlh" as navbar>
+<#import "__header.ftlh" as header/>
+<#import "__scrirts.ftlh" as script/>
+<#import "tags/CarouselTag.ftlh" as carusel/>
+<#import "tags/NavbarTag.ftlh" as navbar>
+<#import "tags/favorite.ftlh" as favorite>
 <@header.header />
 <body>
 <@script.script />
 <@navbar.navbar />
 <div class="row">
     <div class="right-background2 col-sm-9"> <br> <br>
-        <navbar:favorite/>
+        <@favorite.favorite />
         <div class="text-container ">
 Полистайте ленту в Инстаграм и найдете столько советов: что нам надо, что не надо, что срочно выбросить и что вместо этого купить.
 ⠀
@@ -30,7 +31,6 @@
                 Иногда стоит просто примерить, чтобы понять, что на картинке была рабочая идея, а не чей-то бред от слишком хорошей жизни. </li>
         </ul>
         </div>
-        <img src="${pageContext.request.contextPath}/images/whyOne.jpg" alt="eror">
     </div>
     <div class="left-background2 col-sm-3"> <br> </div>
 </div>
