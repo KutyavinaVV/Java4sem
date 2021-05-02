@@ -16,7 +16,7 @@
     </div>
     <div class="card col-sm-8" style="width: 18rem;">
         <div class="card-body">
-            <form method="post">
+            <form id="time">
                 <h5 class="card-title">Выберите услугу:</h5>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="a" value="cons30" id="defaultCheck1">
@@ -41,41 +41,66 @@
                         Подбор нового гардероба (целый день)
                     </label>
                 </div>
-                <input type="date" class="form-control" id="date" value="${date}" max="${maxDate}" min="${today}" name="date" placeholder="Дата" required>
-                <button type="submit" class="btn btn-primary">Проверить дату </button>
+                <input type="date" class="form-control" id="date" max="${maxDate}" min="${today}" name="date" placeholder="Дата" required>
+                <button type="submit" id="#checkData" class="btn btn-primary">Проверить дату </button>
                 <input type="hidden" name="action" value="data"/>
             </form>
             <br>
-            <#if exception??>
-                <script> showMessage('\'${exception}\'')</script>
-            </#if>
-            <#if appo??>
-                <script> showMessage('\'${appo}\'')</script>
-            </#if>
-            <br> <form method="POST">
-                <#if post??>
-                    <#list times as time>
-                        <input type="button" name="time" class="btn btn-primary" value="<c:out value="${time}"/>" onclick="ShowDiv('\'<c:out value="${time}"/>\'')" />
-                    </#list>
-                </#if>
-                <br>
-                <div id="myDiv" style="display:none;" class="answer_list" >
-                    <input type="hidden" id="myTime" name="myTime" value=""/>
-                    <div class="form-group, form_sing" >
-                        <label for="FIO">ФИО</label>
-                        <input type="text" name="FIO" class="form-control" id="FIO" placeholder="Enter name">
-                    </div>
-                    <div class="form-group, form_sing" >
-                        <label for="tel">Номер телефона</label>
-                        <input type="text" name="tel" class="form-control" id="tel" onClick="ValidPhone()" placeholder="Номер телефона">
-                        <div id="message"></div>
-                    </div>
-                    <input type="checkbox" onclick="ValidCheck()" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Согласен получить звонок от администратора</label>
-                    <div class="btn_sing"><button disabled type="submit" id="ok" class="btn btn-primary"  >Submit</button> </div>
-                </div>
-            </form>
+<#--            <#if exception??>-->
+<#--                <script> showMessage('\'${exception}\'')</script>-->
+<#--            </#if>-->
+<#--            <#if appo??>-->
+<#--                <script> showMessage('\'${appo}\'')</script>-->
+<#--            </#if>-->
+<#--            <br> <form method="POST">-->
+<#--                <#if post??>-->
+<#--                    <#list times as time>-->
+<#--                        <input type="button" name="time" class="btn btn-primary" value="<c:out value="${time}"/>" onclick="ShowDiv('\'<c:out value="${time}"/>\'')" />-->
+<#--                    </#list>-->
+<#--                </#if>-->
+<#--                <br>-->
+<#--                <div id="myDiv" style="display:none;" class="answer_list" >-->
+<#--                    <input type="hidden" id="myTime" name="myTime" value=""/>-->
+<#--                    <div class="form-group, form_sing" >-->
+<#--                        <label for="FIO">ФИО</label>-->
+<#--                        <input type="text" name="FIO" class="form-control" id="FIO" placeholder="Enter name">-->
+<#--                    </div>-->
+<#--                    <div class="form-group, form_sing" >-->
+<#--                        <label for="tel">Номер телефона</label>-->
+<#--                        <input type="text" name="tel" class="form-control" id="tel" onClick="ValidPhone()" placeholder="Номер телефона">-->
+<#--                        <div id="message"></div>-->
+<#--                    </div>-->
+<#--                    <input type="checkbox" onclick="ValidCheck()" class="form-check-input" id="exampleCheck1">-->
+<#--                    <label class="form-check-label" for="exampleCheck1">Согласен получить звонок от администратора</label>-->
+<#--                    <div class="btn_sing"><button disabled type="submit" id="ok" class="btn btn-primary"  >Submit</button> </div>-->
+<#--                </div>-->
+<#--            </form>-->
         </div>
     </div>
 </div>
+
+<script
+        src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+        crossorigin="anonymous"></script>
+
+<script>
+
+    $.fn.query = function () {
+        const form = this;
+        form.on('submit', () => {
+
+            $.ajax({
+                url: '/about/data',
+                type: 'POST',
+                data: form.serialize()
+            });
+            return false;
+        });
+    };
+
+    $('#time').query()
+
+</script>
+
 </body>
