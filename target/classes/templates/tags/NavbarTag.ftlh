@@ -14,7 +14,7 @@
                     Articles
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="/title/yourownstyle">Your own style</a>
+                    <a class="dropdown-item" href="/title/youronestyle">Your own style</a>
                     <a class="dropdown-item" href="/title/whyone">Why do some people get many outfit, while others have many questions</a>
                     <a class="dropdown-item" href="">some</a>
                     <a class="dropdown-item" href="">some(2)</a>
