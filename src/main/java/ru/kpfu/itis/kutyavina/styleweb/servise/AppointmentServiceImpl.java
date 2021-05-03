@@ -3,6 +3,9 @@ package ru.kpfu.itis.kutyavina.styleweb.servise;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.kpfu.itis.kutyavina.styleweb.dao.AppointmentRepository;
+import ru.kpfu.itis.kutyavina.styleweb.dto.AppointmentForm;
+import ru.kpfu.itis.kutyavina.styleweb.models.Appointment;
+import ru.kpfu.itis.kutyavina.styleweb.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +18,9 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Autowired
     TimeService timeService;
+
+    @Autowired
+    UserService userService;
 
     @Override
     public List<String> checkTime(String date, String service) throws IllegalArgumentException {
@@ -54,12 +60,29 @@ public class AppointmentServiceImpl implements AppointmentService {
                         if (!timeList.contains(null)) answerTime.add("9:00");
                     }
                     if (answerTime.size() == 0)
-                        throw new IllegalArgumentException("На выбранный день все места заняты, попробуйте выбрать другую дату");
-                } else throw new IllegalArgumentException("Пожалуйста, выберет корректную дату для записи");
-            } else throw new IllegalArgumentException("Пожалуйста, выберет услугу");
+                        throw new IllegalArgumentException("Ошибка: На выбранный день все места заняты, попробуйте выбрать другую дату");
+                } else throw new IllegalArgumentException("Ошибка: Пожалуйста, выберет корректную дату для записи");
+            } else throw new IllegalArgumentException("Ошибка: Пожалуйста, выберет услугу");
 
         }
         return answerTime;
+    }
+
+    @Override
+    public void addAppointment(AppointmentForm appointmentForm, Long userId) {
+        User user = userService.findUser(userId);
+        System.out.println(appointmentForm);
+        appointmentRepository.save(
+                Appointment.builder().client(user)
+                .name(appointmentForm.getName())
+                .date(appointmentForm.getDate())
+                .time(appointmentForm.getTime()).build()
+        );
+    }
+
+    @Override
+    public void removeAppointment(String data, String time) {
+
     }
 
 }

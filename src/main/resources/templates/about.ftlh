@@ -14,9 +14,14 @@
             <p class="card-text">описание которого нет но которое здесь  точно должно быть</p>
         </div>
     </div>
+    <#if notification??>
+        <script>
+            alert("Ваше запись успешно создана!")
+        </script>
+    </#if>
     <div class="card col-sm-8" style="width: 18rem;">
         <div class="card-body">
-            <form id="time">
+            <form id="timik">
                 <h5 class="card-title">Выберите услугу:</h5>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="a" value="cons30" id="defaultCheck1">
@@ -30,7 +35,7 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" name="a" type="radio" value="analysis" id="defaultCheck3">
+                    <input class="form-check-input"  name="a" type="radio" value="analysis" id="defaultCheck3">
                     <label class="form-check-label" for="defaultCheck4">
                         Разбор гардероба (3 часа)
                     </label>
@@ -46,35 +51,25 @@
                 <input type="hidden" name="action" value="data"/>
             </form>
             <br>
-<#--            <#if exception??>-->
-<#--                <script> showMessage('\'${exception}\'')</script>-->
-<#--            </#if>-->
-<#--            <#if appo??>-->
-<#--                <script> showMessage('\'${appo}\'')</script>-->
-<#--            </#if>-->
-<#--            <br> <form method="POST">-->
-<#--                <#if post??>-->
-<#--                    <#list times as time>-->
-<#--                        <input type="button" name="time" class="btn btn-primary" value="<c:out value="${time}"/>" onclick="ShowDiv('\'<c:out value="${time}"/>\'')" />-->
-<#--                    </#list>-->
-<#--                </#if>-->
-<#--                <br>-->
-<#--                <div id="myDiv" style="display:none;" class="answer_list" >-->
-<#--                    <input type="hidden" id="myTime" name="myTime" value=""/>-->
-<#--                    <div class="form-group, form_sing" >-->
-<#--                        <label for="FIO">ФИО</label>-->
-<#--                        <input type="text" name="FIO" class="form-control" id="FIO" placeholder="Enter name">-->
-<#--                    </div>-->
-<#--                    <div class="form-group, form_sing" >-->
-<#--                        <label for="tel">Номер телефона</label>-->
-<#--                        <input type="text" name="tel" class="form-control" id="tel" onClick="ValidPhone()" placeholder="Номер телефона">-->
-<#--                        <div id="message"></div>-->
-<#--                    </div>-->
-<#--                    <input type="checkbox" onclick="ValidCheck()" class="form-check-input" id="exampleCheck1">-->
-<#--                    <label class="form-check-label" for="exampleCheck1">Согласен получить звонок от администратора</label>-->
-<#--                    <div class="btn_sing"><button disabled type="submit" id="ok" class="btn btn-primary"  >Submit</button> </div>-->
-<#--                </div>-->
-<#--            </form>-->
+            <form id="saveApp"  action="/about/add" method="POST" style="display: none">
+                <div class="timeSpace"></div>
+                <div id="myDiv" class="answer_list" >
+                    <div class="form-group, form_sing" >
+                        <label for="FIO">ФИО</label>
+                        <input type="text" name="FIO" class="form-control" id="FIO" placeholder="Enter name">
+                    </div>
+                    <div class="form-group, form_sing" >
+                        <label for="tel">Номер телефона</label>
+                        <input type="text" name="tel" class="form-control" id="tel" placeholder="Номер телефона">
+                    </div>
+                    <input type="hidden" value="" name='date' id="dataInForm" required>
+                    <input type="hidden" value="" name='time' id="time" required>
+                    <input type="hidden" value="" name='name' id="name" required>
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1" required>Согласен получить звонок от администратора</label>
+                    <div class="btn_sing"><button type="submit" id="ok" class="btn btn-primary"  >Submit</button> </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -86,20 +81,44 @@
 
 <script>
 
+    const onTimeGetting = () => {
+        $('#saveApp').show()
+        console.log(time)
+    }
+
+    let time = "";
+
     $.fn.query = function () {
         const form = this;
         form.on('submit', () => {
-
             $.ajax({
                 url: '/about/data',
                 type: 'POST',
-                data: form.serialize()
+                data: form.serialize(),
+                success: function(result) {
+                    if (result[0].includes('Ошибка')) {
+                        alert(result[0].replace('Ошибка: ', ''))
+                    }
+                    else {
+                        $('#dataInForm').val($('#date').val())
+                        $('.timer').hide();
+                        result.map( time => {
+                            $('.timeSpace').append('<input type="button" class=timer name="timer" class="btn btn-primary" value="' + time + '">');
+                        })
+                        onTimeGetting();
+                        $('.timer').on('click', ( event ) => {
+                            console.log(event.currentTarget.value)
+                            $('#time').val(event.currentTarget.value.toString());
+                        });
+                        $('#name').val(document.querySelector('input[name="a"]:checked').value );
+                    }
+                }
             });
             return false;
         });
     };
 
-    $('#time').query()
+    $('#timik').query()
 
 </script>
 
