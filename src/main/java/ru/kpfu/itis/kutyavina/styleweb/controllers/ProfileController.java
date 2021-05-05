@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import ru.kpfu.itis.kutyavina.styleweb.logging.Logging;
 import ru.kpfu.itis.kutyavina.styleweb.security.details.UserDetailsImpl;
+import ru.kpfu.itis.kutyavina.styleweb.servise.AppointmentService;
 import ru.kpfu.itis.kutyavina.styleweb.servise.CapsuleService;
 import ru.kpfu.itis.kutyavina.styleweb.servise.UserService;
 
@@ -21,12 +22,18 @@ public class ProfileController {
     @Autowired
     CapsuleService capsuleService;
 
+    @Autowired
+    AppointmentService appointmentService;
+
     @GetMapping("")
     @Logging
     @PreAuthorize("isAuthenticated()")
     public String getProfilePage(ModelMap modelMap, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        Long userId = userDetails.getId();
+        appointmentService.removeUnNeeded(userId);
         modelMap.addAttribute("user", userDetails);
-        modelMap.addAttribute("capsules", capsuleService.getCapsules(userDetails.getId()));
+        modelMap.addAttribute("capsules", capsuleService.getCapsules(userId));
+        modelMap.addAttribute("appointments", appointmentService.getAllByUserId(userId));
         return "profile";
     }
 

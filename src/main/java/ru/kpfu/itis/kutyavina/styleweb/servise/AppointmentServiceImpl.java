@@ -2,6 +2,7 @@ package ru.kpfu.itis.kutyavina.styleweb.servise;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.kpfu.itis.kutyavina.styleweb.dao.AppointmentRepository;
 import ru.kpfu.itis.kutyavina.styleweb.dto.AppointmentForm;
 import ru.kpfu.itis.kutyavina.styleweb.models.Appointment;
@@ -84,6 +85,22 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public void removeAppointment(String data, String time) {
 
+    }
+
+    @Override
+    public List<Appointment> getAllByUserId(Long userId) {
+        return appointmentRepository.findAllByClient(userService.findUser(userId));
+    }
+
+    @Override
+    @Transactional
+    public void removeUnNeeded(Long userId) {
+        List<Appointment> appointments = getAllByUserId(userId);
+        for (Appointment a: appointments) {
+            if (!timeService.checkData(a.getDate())) {
+                appointmentRepository.deleteByDateAndTime(a.getDate(), a.getTime());
+            }
+        }
     }
 
     private static List<String> getTimeList(List<Appointment> appointments)  {

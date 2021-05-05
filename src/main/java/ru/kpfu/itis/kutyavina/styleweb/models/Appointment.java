@@ -30,5 +30,11 @@ public class Appointment {
     @JoinColumn(name = "user_id")
     private User client;
 
+
+    public String getFullName() {
+        AppointmentList al = new AppointmentList();
+        return al.get(name);
+    }
+
 }
 

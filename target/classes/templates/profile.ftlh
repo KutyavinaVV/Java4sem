@@ -30,15 +30,15 @@
 
         <dt class="col-sm-2">Мои записи</dt>
         <ul class="col-sm-2">
-<#--            <c:forEach var="a" items="${Appointment}">-->
-<#--                <li><c:out value="${a.getAllName()}"/> <c:out value="${a.getDate()}"/> <c:out value="${a.getTime()}"/></li>-->
+            <#list appointments as appointment>
+                <li>${appointment.getFullName()} ${appointment.getDate()}${appointment.getTime()}</li>
 <#--                <form action="${pageContext.request.contextPath}/capsule" method="post">-->
 <#--                    <p><input type="image" src="${pageContext.request.contextPath}/images/trash.png" alt="ОК"></p>-->
 <#--                    <input type="hidden" name="date" value="<c:out value="${a.getDate()}"/>">-->
 <#--                    <input type="hidden" name="time" value="<c:out value="${a.getTime()}"/>">-->
 <#--                    <input type="hidden" name="action" value="deleteApp"/>-->
 <#--                </form>-->
-<#--            </c:forEach>-->
+            </#list>
         </ul>
         <dd class="col-sm-1">
             <div class="dropdown update">
