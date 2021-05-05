@@ -30,7 +30,8 @@ public class AppointmentServiceImpl implements AppointmentService {
             if (service != null) {
                 if (timeService.checkData(date)) {
                     ArrayList<String> timeList = AppointmentList.getTime();
-                    List<String> timeB = appointmentRepository.findAllByDate(date);
+                    List<String> timeB = getTimeList(appointmentRepository.findAllByDate(date));
+                    System.out.println(timeB);
                     for (String time : timeB) {
                         timeList.set(timeList.indexOf(time), null);
                     }
@@ -83,6 +84,33 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public void removeAppointment(String data, String time) {
 
+    }
+
+    private static List<String> getTimeList(List<Appointment> appointments)  {
+        List<String> timeList  = AppointmentList.getTime();
+        List<String> answerList = new ArrayList<>();
+        for (Appointment appointment: appointments) {
+
+            String time = appointment.getTime();
+            String name = appointment.getName();
+
+            switch (name) {
+                case "cons30":
+                case  "cons60":
+                    answerList.add(time);
+                    break;
+                case "analysis":
+                    answerList.add(time);
+                    answerList.add(timeList.get(timeList.indexOf(time) + 2));
+                    answerList.add(timeList.get(timeList.indexOf(time) + 1));
+                    break;
+                case "newG":
+                    answerList = timeList;
+                    break;
+
+            }
+        }
+        return answerList;
     }
 
 }
