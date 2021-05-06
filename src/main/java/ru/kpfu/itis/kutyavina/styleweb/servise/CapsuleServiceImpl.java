@@ -1,8 +1,6 @@
 package ru.kpfu.itis.kutyavina.styleweb.servise;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import ru.kpfu.itis.kutyavina.styleweb.dao.CapsuleRepository;
 import ru.kpfu.itis.kutyavina.styleweb.dao.UsersRepository;

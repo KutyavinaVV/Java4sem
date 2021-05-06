@@ -11,9 +11,6 @@ import ru.kpfu.itis.kutyavina.styleweb.security.details.UserDetailsImpl;
 import ru.kpfu.itis.kutyavina.styleweb.servise.AppointmentService;
 import ru.kpfu.itis.kutyavina.styleweb.servise.TimeService;
 
-import java.text.ParseException;
-import java.util.Map;
-
 @Controller
 public class AboutController {
 

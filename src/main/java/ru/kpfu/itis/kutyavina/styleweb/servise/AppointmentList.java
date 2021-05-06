@@ -32,8 +32,4 @@ public class AppointmentList {
         return timeList;
     }
 
-//    public String getAllName() {
-//        AppointmentList al = new AppointmentList();
-//        return al.get(name);
-//    }
 }

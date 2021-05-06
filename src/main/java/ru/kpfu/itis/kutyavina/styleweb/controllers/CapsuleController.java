@@ -1,6 +1,5 @@
 package ru.kpfu.itis.kutyavina.styleweb.controllers;
 
-import org.apache.catalina.Lifecycle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -15,7 +14,6 @@ import ru.kpfu.itis.kutyavina.styleweb.models.Capsule;
 import ru.kpfu.itis.kutyavina.styleweb.security.details.UserDetailsImpl;
 import ru.kpfu.itis.kutyavina.styleweb.servise.AppointmentService;
 import ru.kpfu.itis.kutyavina.styleweb.servise.CapsuleService;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
@@ -48,13 +46,13 @@ public class CapsuleController {
     }
 
     @PostMapping("/capsule/updatename")
-    public String updateCpasuleName(@RequestParam Map<String,String> params, @AuthenticationPrincipal UserDetailsImpl userDetails, HttpServletRequest request) {
+    public String updateCpasuleName(@RequestParam Map<String,String> params, HttpServletRequest request) {
         capsuleService.updateName(params.get("name"), Long.parseLong(params.get("capsuleId")));
         return "redirect:"+ request.getHeader("Referer");
     }
 
     @PostMapping("/capsule/remove")
-    public String removeCapsule(@RequestParam Map<String,String> params,  @AuthenticationPrincipal UserDetailsImpl userDetails, HttpServletRequest request) {
+    public String removeCapsule(@RequestParam Map<String,String> params, HttpServletRequest request) {
         capsuleService.removeCapsule(Long.parseLong(params.get("capsuleId")), params.get("say"));;
         return "redirect:"+ request.getHeader("Referer");
     }

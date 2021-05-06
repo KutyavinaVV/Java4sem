@@ -6,4 +6,5 @@ public interface SignUpService {
 
     void SignUp(UserForm userForm);
     void CheckData(UserForm userForm) throws IllegalArgumentException;
+
 }

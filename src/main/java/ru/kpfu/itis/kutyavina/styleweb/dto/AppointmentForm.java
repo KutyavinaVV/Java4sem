@@ -8,6 +8,7 @@ public class AppointmentForm {
     private String date;
     private String time;
     private String name;
+    private String phone;
     
 }
 

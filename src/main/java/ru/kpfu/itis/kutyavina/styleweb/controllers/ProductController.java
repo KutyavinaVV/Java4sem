@@ -8,15 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import ru.kpfu.itis.kutyavina.styleweb.dto.CapsuleForm;
 import ru.kpfu.itis.kutyavina.styleweb.security.details.UserDetailsImpl;
 import ru.kpfu.itis.kutyavina.styleweb.servise.CapsuleService;
 import ru.kpfu.itis.kutyavina.styleweb.servise.ProductService;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 
 @Controller
 public class ProductController {

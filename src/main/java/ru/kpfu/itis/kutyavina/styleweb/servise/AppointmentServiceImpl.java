@@ -124,7 +124,6 @@ public class AppointmentServiceImpl implements AppointmentService {
                 case "newG":
                     answerList = timeList;
                     break;
-
             }
         }
         return answerList;
