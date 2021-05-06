@@ -1,18 +1,21 @@
 package ru.kpfu.itis.kutyavina.styleweb.servise;
+import org.springframework.stereotype.Service;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
+@Service
 public class APIService {
 
     private static String URL_EMAIL = "https://cleaner.dadata.ru/api/v1/clean/email";
     private static String URL_PHONE = "https://cleaner.dadata.ru/api/v1/clean/phone";
     private static String TOKEN = "8809edcac820bf5caaaa1ef4d8071259815212de";
 
-    public boolean checkEmail() {
+    public boolean checkEmail(String email) {
         try {
-            String postData = "[ \"tszdest@tsdcvest.cosdcm\" ]";
+            String postData = "[ \"" + email + "\" ]";
             URL object = new URL(URL_EMAIL);
                 HttpURLConnection con = (HttpURLConnection) object.openConnection();
             con.setDoInput(true);
@@ -37,7 +40,8 @@ public class APIService {
                 }
                 br.close();
                 String answ = sb.toString();
-                System.out.println(answ);
+                int result = Integer.parseInt(Character.toString(answ.split("qc\":")[1].charAt(0)));
+                return ((result == 0) || (result == 4));
             } else {
                 System.out.println(HttpResult);
             }
@@ -47,9 +51,9 @@ public class APIService {
         return false;
     }
 
-    public boolean checkPhone() {
+    public boolean checkPhone(String phone) {
         try {
-            String postData = "[ \"89827950269\" ]";
+            String postData = "[ \"" + phone + "\" ]";
             URL object = new URL(URL_PHONE);
             HttpURLConnection con = (HttpURLConnection) object.openConnection();
             con.setDoInput(true);
@@ -57,6 +61,7 @@ public class APIService {
             con.setRequestProperty("Content-Type", "application/json");
             con.setRequestProperty("Authorization","Token " +  TOKEN);
             con.setRequestProperty("X-Secret", "fc0528818eb61d5947a3406e42982182e7e5027f");
+
             con.setDoOutput(true);
             OutputStream outputStream = con.getOutputStream();
             outputStream.write(postData.getBytes(StandardCharsets.UTF_8));
@@ -74,7 +79,8 @@ public class APIService {
                 }
                 br.close();
                 String answ = sb.toString();
-                System.out.println(answ);
+                int result = Integer.parseInt(Character.toString(answ.split("qc\":")[1].charAt(0)));
+                return ((result == 0));
             } else {
                 System.out.println(HttpResult);
             }

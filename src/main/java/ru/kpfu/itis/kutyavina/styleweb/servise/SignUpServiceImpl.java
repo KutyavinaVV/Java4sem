@@ -18,6 +18,9 @@ public class SignUpServiceImpl implements SignUpService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    APIService apiService;
+
     @Override
     public void SignUp(UserForm userForm) {
         System.out.println(userForm);
@@ -38,6 +41,9 @@ public class SignUpServiceImpl implements SignUpService {
     private boolean checkEmail(String email){
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
                 "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        if(pattern.matcher(email).matches()) {
+            return apiService.checkEmail(email);
+        }
         return pattern.matcher(email).matches();
     }
 
@@ -51,6 +57,10 @@ public class SignUpServiceImpl implements SignUpService {
 
     private void throwNewException(Boolean is, String message) throws IllegalArgumentException {
         if(!is) throw new IllegalArgumentException(message);
+    }
+
+    public boolean checkPhone(String phone) {
+        return apiService.checkPhone(phone);
     }
 
 }
