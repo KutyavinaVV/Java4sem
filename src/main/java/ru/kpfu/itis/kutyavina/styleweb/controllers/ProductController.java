@@ -38,22 +38,4 @@ public class ProductController {
         return "product";
     };
 
-    @PostMapping("/capsule/create")
-    public String createCapsule(CapsuleForm capsuleForm,  @AuthenticationPrincipal UserDetailsImpl userDetails, HttpServletRequest request) {
-        capsuleService.createCapsule(capsuleForm, userDetails.getId());
-        String referer = request.getHeader("Referer");
-        return "redirect:"+ referer;
-    }
-
-    @PostMapping("/capsule/updatename")
-    public String updateCpasuleName(@RequestParam Map<String,String> params, @AuthenticationPrincipal UserDetailsImpl userDetails, HttpServletRequest request) {
-        capsuleService.updateName(params.get("name"), Long.parseLong(params.get("capsuleId")));
-        return "redirect:"+ request.getHeader("Referer");
-    }
-
-    @PostMapping("/capsule/remove")
-    public String removeCapsule(@RequestParam Map<String,String> params,  @AuthenticationPrincipal UserDetailsImpl userDetails, HttpServletRequest request) {
-        capsuleService.removeCapsule(Long.parseLong(params.get("capsuleId")), params.get("say"));;
-        return "redirect:"+ request.getHeader("Referer");
-    }
 }

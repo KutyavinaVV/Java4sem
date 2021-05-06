@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.kpfu.itis.kutyavina.styleweb.logging.LoggingAspect;
+import ru.kpfu.itis.kutyavina.styleweb.models.Capsule;
+import ru.kpfu.itis.kutyavina.styleweb.utils.StringConverter;
 
 import java.util.logging.Logger;
 
@@ -21,4 +23,10 @@ public class WebConfig {
     public Logger logger() {
         return Logger.getLogger(LoggingAspect.class.getName());
     }
+
+    @Bean
+    public StringConverter idolGenericConverter(){
+        return new StringConverter(Capsule.class);
+    }
+
 }

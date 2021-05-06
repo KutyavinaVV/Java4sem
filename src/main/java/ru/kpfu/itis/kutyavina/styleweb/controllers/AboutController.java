@@ -36,7 +36,7 @@ public class AboutController {
     public String addAppointment(AppointmentForm appointmentForm,  @AuthenticationPrincipal UserDetailsImpl userDetails, ModelMap modelMap) {
         appointmentService.addAppointment(appointmentForm, userDetails.getId());
         modelMap.put("notification", "Запись была успешно создана");
-        return "redirect:about";
+        return "redirect:profile";
     }
 
 
