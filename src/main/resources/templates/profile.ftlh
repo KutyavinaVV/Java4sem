@@ -131,24 +131,5 @@
     </#list>
 </div>
 
-<script>
-
-    const deleteProductFromList = ({ capsuleId, productId }) => {
-        $.ajax({
-            url: '/product/remove',
-            type: 'DELETE',
-            data: {
-                capsuleId: capsuleId,
-                productId: productId
-            }
-        });
-        $(`#` + productId).remove();
-    }
-
-    $('.deleteItem').on('click', ( event ) => {
-        deleteProductFromList(event.target.dataset);
-    });
-
-
-</script>
+<script type="text/javascript" src="../static/js/profile.js"> </script>
 </body>

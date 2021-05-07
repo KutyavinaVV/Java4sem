@@ -53,23 +53,5 @@
             integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
             crossorigin="anonymous"></script>
 
-    <script>
-
-        const addProductInList = ({capsuleId, productId }) => {
-            $.ajax({
-                url: '/product/add',
-                type: 'POST',
-                data: {
-                    capsuleId: capsuleId,
-                    productId: productId
-                }
-            });
-        }
-
-        $('.capsule').on('click', (event) => {
-            addProductInList(event.target.dataset);
-        });
-
-
-    </script>
+    <script type="text/javascript" src="../static/js/product.js"> </script>
 </div>
