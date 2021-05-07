@@ -1,5 +1,6 @@
 package ru.kpfu.itis.kutyavina.styleweb.servise;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -7,9 +8,14 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Service
 public class TimeServiceImpl implements TimeService{
+
+    @Autowired
+    private Logger logger;
 
     @Override
     public String getTodayDay() {
@@ -28,6 +34,7 @@ public class TimeServiceImpl implements TimeService{
         try {
             dateAsObj = sdf.parse(dateS);
         } catch (ParseException e) {
+            logger.log(Level.SEVERE, "wrong date", e );
             e.printStackTrace();
         }
         Calendar cal = Calendar.getInstance();
@@ -46,7 +53,7 @@ public class TimeServiceImpl implements TimeService{
         try {
             d = formatter.parse(dateInString);
         } catch (ParseException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "wrong date", e );
         }
         return dateNow.compareTo(d) < 0;
     }

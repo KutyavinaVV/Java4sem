@@ -1,13 +1,19 @@
 package ru.kpfu.itis.kutyavina.styleweb.servise;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Service
 public class APIService {
+
+    @Autowired
+    Logger logger;
 
     private static String URL_EMAIL = "https://cleaner.dadata.ru/api/v1/clean/email";
     private static String URL_PHONE = "https://cleaner.dadata.ru/api/v1/clean/phone";
@@ -47,6 +53,7 @@ public class APIService {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            logger.log(Level.SEVERE, "error with server", e );
         }
         return false;
     }
@@ -86,6 +93,7 @@ public class APIService {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            logger.log(Level.SEVERE, "error with connection", e );
         }
         return false;
     }

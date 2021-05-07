@@ -10,9 +10,14 @@ import ru.kpfu.itis.kutyavina.styleweb.dto.UserForm;
 import ru.kpfu.itis.kutyavina.styleweb.servise.SignUpService;
 
 import javax.annotation.security.PermitAll;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Controller
 public class SignUpController {
+
+    @Autowired
+    Logger logger;
 
     @Autowired
     SignUpService signUpService;
@@ -30,6 +35,7 @@ public class SignUpController {
         }
         catch (IllegalArgumentException ex) {
             model.put("error", ex.getMessage());
+            logger.log(Level.SEVERE, "wrong parameters for sign up", ex );
             return "signup";
         }
         signUpService.SignUp(userForm);

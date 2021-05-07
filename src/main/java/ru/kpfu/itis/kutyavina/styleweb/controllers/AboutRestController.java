@@ -7,9 +7,14 @@ import ru.kpfu.itis.kutyavina.styleweb.servise.AppointmentService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Controller
 public class AboutRestController {
+
+    @Autowired
+    Logger logger;
 
     @Autowired
     AppointmentService appointmentService;
@@ -23,6 +28,7 @@ public class AboutRestController {
         }
         catch (IllegalArgumentException e) {
            result.add(e.getMessage());
+            logger.log(Level.SEVERE, "wrong date", e );
         }
         return result;
     }

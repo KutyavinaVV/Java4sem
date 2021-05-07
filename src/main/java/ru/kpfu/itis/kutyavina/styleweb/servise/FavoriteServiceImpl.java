@@ -17,7 +17,6 @@ public class FavoriteServiceImpl implements FavoriteService {
     @Override
     public boolean isFavorite(Long userId, String titleName) {
         Title title = favoriteRepository.isFavorite(titleName, userId);
-        System.out.println(title);
         return title != null;
     }
 
