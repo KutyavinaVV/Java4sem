@@ -1,6 +1,7 @@
 package ru.kpfu.itis.kutyavina.styleweb.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,6 +21,15 @@ public class ProductController {
 
     @Autowired
     CapsuleService capsuleService;
+
+    @GetMapping("/product/my")
+    @PreAuthorize("isAuthenticated()")
+    public String getMyProduct(ModelMap map, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        map.addAttribute("user", "");
+        map.addAttribute("products", productService.getCurrentUserProducts(userDetails.getId()));
+        return "product";
+    };
 
     @GetMapping("/product/{type}")
     public String getProductPage(@PathVariable String type, ModelMap map, @AuthenticationPrincipal UserDetailsImpl userDetails) {

@@ -9,4 +9,5 @@ public interface  ProductService {
     List<Product> getProductByType(String type);
     void addProductInList(Long capsuleId, Long productId);
     void removeProductFromList(Long capsuleId, Long productId);
+    List<Product> getCurrentUserProducts(Long id);
 }

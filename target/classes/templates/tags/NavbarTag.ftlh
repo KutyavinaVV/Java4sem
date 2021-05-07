@@ -28,7 +28,7 @@
                     <a class="dropdown-item" href="/product/jeans">jeans</a>
                     <a class="dropdown-item" href="/product/outerwear">outerwear</a>
                     <a class="dropdown-item" href="/product/blazer">blazer</a>
-                    <a class="dropdown-item" href="#">swimsuit</a>
+                    <a class="dropdown-item" href="/product/my">All My</a>
                 </div>
             </li>
             <li class="nav-item">

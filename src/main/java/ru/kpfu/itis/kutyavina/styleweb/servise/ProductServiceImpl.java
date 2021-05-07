@@ -39,5 +39,10 @@ public class ProductServiceImpl implements ProductService {
         productRepository.save(product);
     }
 
+    @Override
+    public List<Product> getCurrentUserProducts(Long id) {
+        return productRepository.getProductByUser(id);
+    }
+
 
 }
