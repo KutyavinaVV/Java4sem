@@ -9,6 +9,5 @@ public class AppointmentForm {
     private String time;
     private String name;
     private String phone;
-    
 }
 

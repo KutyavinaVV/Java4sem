@@ -92,7 +92,7 @@
                 </div>
 
             <div class="card-body">
-                <h5 class="card-title">${capsule.getName()}</h5>
+                <a href="/capsule/${capsule.getId()}"><h5 class="card-title">${capsule.getName()}</h5></a>
             </div>
             <#list capsule.getProductList() as product>
                 <div class="card-body" id="${product.getId()}">

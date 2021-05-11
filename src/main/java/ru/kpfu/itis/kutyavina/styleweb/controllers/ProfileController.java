@@ -48,7 +48,7 @@ public class ProfileController {
     @PreAuthorize("isAuthenticated()")
     public String deleteUser(@RequestParam("delete") String delete, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return userService.delete(userDetails.getId(), delete) ?
-         "redirect:http://localhost:8080/logout" :  "redirect:http://localhost:8080/profile";
+         "redirect:/logout" :  "redirect:/profile";
     }
 
 }

@@ -23,6 +23,9 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Autowired
     UserService userService;
 
+    @Autowired
+    APIService apiService;
+
     @Override
     public List<String> checkTime(String date, String service) throws IllegalArgumentException {
         List<String> answerTime = new ArrayList<>();
@@ -73,7 +76,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public void addAppointment(AppointmentForm appointmentForm, Long userId) {
         User user = userService.findUser(userId);
-        System.out.println(appointmentForm);
+        System.out.println(apiService.checkPhone(appointmentForm.getPhone()));
         appointmentRepository.save(
                 Appointment.builder().client(user)
                 .name(appointmentForm.getName())

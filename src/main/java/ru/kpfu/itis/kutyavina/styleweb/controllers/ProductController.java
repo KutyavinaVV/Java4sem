@@ -25,7 +25,6 @@ public class ProductController {
     @GetMapping("/product/my")
     @PreAuthorize("isAuthenticated()")
     public String getMyProduct(ModelMap map, @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         map.addAttribute("user", "");
         map.addAttribute("products", productService.getCurrentUserProducts(userDetails.getId()));
         return "product";

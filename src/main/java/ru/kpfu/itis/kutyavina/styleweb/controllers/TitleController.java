@@ -21,7 +21,7 @@ public class TitleController {
         if (!SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser")) {
             if (favoriteService.isFavorite(userDetails.getId(), name)) map.put("isFavorite", true);
             map.put("name", name);
-            map.put("userId", userDetails.getId());
+            map.put("user", userDetails.getId());
         }
         return name;
     }

@@ -26,6 +26,7 @@ public class AboutController {
         modelMap.put("maxDate", timeService.getMaxDate());
         modelMap.put("date", timeService.getTodayDay());
         modelMap.put("today", timeService.getTodayDay());
+        modelMap.put("user", true);
         return "about";
     }
 
@@ -33,7 +34,7 @@ public class AboutController {
     public String addAppointment(AppointmentForm appointmentForm,  @AuthenticationPrincipal UserDetailsImpl userDetails, ModelMap modelMap) {
         appointmentService.addAppointment(appointmentForm, userDetails.getId());
         modelMap.put("notification", "Запись была успешно создана");
-        return "redirect:profile";
+        return "redirect:/profile";
     }
 
 

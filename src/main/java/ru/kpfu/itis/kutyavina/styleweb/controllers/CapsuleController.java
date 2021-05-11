@@ -35,7 +35,7 @@ public class CapsuleController {
         modelMap.addAttribute("user", userDetails);
         modelMap.addAttribute("capsule", capsule);
         modelMap.addAttribute("appointments", appointmentService.getAllByUserId(userId));
-        return (capsule.getOwner().getId() == userId ) ? "capsule" : "redirect:http://localhost:8080/profile";
+        return (capsule.getOwner().getId() == userId ) ? "capsule" : "redirect:/profile";
     }
 
     @PostMapping("/capsule/create")
