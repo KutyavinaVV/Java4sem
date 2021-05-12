@@ -19,7 +19,7 @@ public class AboutRestController {
     @Autowired
     AppointmentService appointmentService;
 
-    @PostMapping("/about/data")
+    @GetMapping("/about/data")
     @ResponseBody
     public List<String> getTime(@RequestParam Map<String, String> params) {
         List<String> result = new ArrayList<>();
@@ -35,8 +35,8 @@ public class AboutRestController {
 
     @DeleteMapping("/about/delete")
     @ResponseBody
-    public void deleteAppointment(@RequestParam Map<String, String> params) {
-
+    public void deleteAppointment(@RequestParam String id) {
+        appointmentService.removeAppointment(Long.parseLong(id));
     }
 
 }

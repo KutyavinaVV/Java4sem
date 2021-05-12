@@ -1,0 +1,56 @@
+###
+GET http://localhost:8080/capsule/get/7
+Content-Type: application/json
+
+###
+PUT http://localhost:8080/capsule
+Content-Type: application/json
+
+{
+  "name" : "кто-то",
+  "owner" : {
+    "name": "TestiK",
+    "id": 5,
+    "email": "test@test.com"
+  },
+  "productList" : []
+}
+
+###
+DELETE http://localhost:8080/capsule/10
+Content-Type: application/json
+
+###
+PATCH  http://localhost:8080/capsule
+Content-Type: application/json
+
+{
+  "name" : "кто-то",
+  "owner" : {
+    "name": "TestiK",
+    "id": 5,
+    "email": "test@test.com"
+  },
+  "id" : 8
+}
+
+###
+GET http://localhost:8080/capsules/5
+
+###
+PUT http://localhost:8080/capsules/8/product
+Content-Type: application/json
+
+{
+  "name" : "КУРТКА РУБАШКА",
+  "id" : "12"
+}
+
+###
+DELETE http://localhost:8080/capsules/8/product
+Content-Type: application/json
+
+{
+  "name" : "КУРТКА РУБАШКА",
+  "id" : "12"
+}

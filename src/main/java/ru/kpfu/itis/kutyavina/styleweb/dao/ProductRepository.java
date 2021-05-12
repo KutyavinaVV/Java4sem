@@ -3,7 +3,6 @@ package ru.kpfu.itis.kutyavina.styleweb.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import ru.kpfu.itis.kutyavina.styleweb.models.Product;
-import ru.kpfu.itis.kutyavina.styleweb.models.Title;
 
 import java.util.List;
 
@@ -17,4 +16,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "where user_id = ?1",
             nativeQuery = true)
     List<Product> getProductByUser(Long userId);
+
+    Product findByName(String name);
 }

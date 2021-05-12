@@ -10,7 +10,7 @@ $.fn.query = function () {
     form.on('submit', () => {
         $.ajax({
             url: '/about/data',
-            type: 'POST',
+            type: 'GET',
             data: form.serialize(),
             success: function(result) {
                 if (result[0].includes('Ошибка')) {

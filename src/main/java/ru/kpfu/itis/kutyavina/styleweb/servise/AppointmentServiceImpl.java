@@ -86,8 +86,9 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public void removeAppointment(String data, String time) {
-
+    public void removeAppointment(Long id) {
+        Appointment appointment = appointmentRepository.findById(id).orElseThrow(IllegalAccessError::new);
+        appointmentRepository.delete(appointment);
     }
 
     @Override

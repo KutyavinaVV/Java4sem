@@ -17,7 +17,7 @@ public class RestController {
     @Autowired
     FavoriteService favoriteService;
 
-    @PostMapping("/product/add")
+    @PutMapping("/product/add")
     @ResponseBody
     public void addProductInCap(@RequestParam Map<String,String> params ) {
         productService.addProductInList(
