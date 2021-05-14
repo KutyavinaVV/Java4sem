@@ -14,6 +14,7 @@ import ru.kpfu.itis.kutyavina.styleweb.models.Capsule;
 import ru.kpfu.itis.kutyavina.styleweb.security.details.UserDetailsImpl;
 import ru.kpfu.itis.kutyavina.styleweb.servise.AppointmentService;
 import ru.kpfu.itis.kutyavina.styleweb.servise.CapsuleService;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
