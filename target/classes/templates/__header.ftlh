@@ -71,6 +71,11 @@
         .img.d-block {
             box-shadow: 0 0 10px rgba(0,0,0,0.5)
         }
+
+        .blue {
+            background: #062580;
+            color: white;
+        }
     </style>
     <script type="text/javascript" th:src="@{/productScript.js}"> </script>
     <script>

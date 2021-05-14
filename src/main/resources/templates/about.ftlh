@@ -65,8 +65,8 @@
                     <input type="hidden" value="" name='date' id="dataInForm" required>
                     <input type="hidden" value="" name='time' id="time" required>
                     <input type="hidden" value="" name='name' id="name" required>
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1" required>Согласен получить звонок от администратора</label>
+                    <input type="checkbox" required class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Согласен получить звонок от администратора</label>
                     <div class="btn_sing"><button type="submit" id="ok" class="btn btn-primary"  >Submit</button> </div>
                 </div>
             </form>

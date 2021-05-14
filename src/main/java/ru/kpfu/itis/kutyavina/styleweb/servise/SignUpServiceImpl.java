@@ -21,6 +21,9 @@ public class SignUpServiceImpl implements SignUpService {
     @Autowired
     APIService apiService;
 
+    @Autowired
+    UsersRepository usersRepository;
+
     @Override
     public void SignUp(UserForm userForm) {
         System.out.println(userForm);
@@ -41,10 +44,10 @@ public class SignUpServiceImpl implements SignUpService {
     private boolean checkEmail(String email){
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
                 "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-        if(pattern.matcher(email).matches()) {
-            return apiService.checkEmail(email);
+        if(pattern.matcher(email).matches() && (apiService.checkEmail(email))) {
+            if(!usersRepository.findByEmail(email).isPresent()) return true;
         }
-        return pattern.matcher(email).matches();
+        return false;
     }
 
     private boolean checkPassword (String password, String password_repeat) {

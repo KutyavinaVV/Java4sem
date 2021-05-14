@@ -26,6 +26,7 @@ public class ProductService{
     public void addProductInList(Long capsuleId, Long productId) {
         Product product = productRepository.findById(productId).orElseThrow(IllegalAccessError::new);
         Capsule capsule = capsuleRepository.findById(capsuleId).orElseThrow(IllegalAccessError::new);
+        if(capsule.getProductList().contains(product)) return;
         product.getCapsuleList().add(capsule);
         productRepository.save(product);
     }

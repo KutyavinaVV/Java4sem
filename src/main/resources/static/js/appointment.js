@@ -1,6 +1,11 @@
 const onTimeGetting = () => {
     $('#saveApp').show()
-    console.log(time)
+}
+
+const onDataChange = () => {
+    $('#saveApp').hide();
+    console.log("hi")
+    $('.timer').hide()
 }
 
 let time = "";
@@ -13,6 +18,7 @@ $.fn.query = function () {
             type: 'GET',
             data: form.serialize(),
             success: function(result) {
+                onDataChange();
                 if (result[0].includes('Ошибка')) {
                     alert(result[0].replace('Ошибка: ', ''))
                 }
@@ -23,7 +29,9 @@ $.fn.query = function () {
                         $('.timeSpace').append('<input type="button" class=timer name="timer" class="btn btn-primary" value="' + time + '">');
                     })
                     onTimeGetting();
-                    $('.timer').on('click', ( event ) => {
+                    $('.timer').on('click', function (event) {
+                        $('.timer').removeClass('blue')
+                        this.classList.add('blue')
                         console.log(event.currentTarget.value)
                         $('#time').val(event.currentTarget.value.toString());
                     });
