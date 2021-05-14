@@ -29,6 +29,6 @@ public class LoggingAspect {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String name = authentication.getName();
         String method = joinPoint.getSignature().getName() + " " + name;
-        logger.log(Level.INFO, method);
+        logger.log(Level.WARNING, method);
     }
 }

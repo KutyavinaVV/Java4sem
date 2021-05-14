@@ -34,7 +34,6 @@
                 <li id="${appointment.getId()}" >${appointment.getFullName()} ${appointment.getDate()}${appointment.getTime()}
                 <img src="/images/trash.png" class="removeAppointment" data-id="${appointment.getId()}" alt="">
                 </li>
-
             </#list>
         </ul>
         <dd class="col-sm-1">
@@ -42,7 +41,6 @@
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     delete
                 </a>
-
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
                     <form method="post" action="/profile/delete">
                         <input type="text" name="delete" placeholder="Say Yes">
