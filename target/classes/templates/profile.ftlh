@@ -49,7 +49,7 @@
             </div>
         </dd>
         <dd class="col-sm-2">
-            <a href="/logout" class="btn btn-secondary btn-lg active " style="width: 130px; height: 55px; margin: -4px 0 0 10px;" role="button" aria-pressed="true">Sign Out</a>
+            <a href="/logout" class="btn btn-secondary btn-lg active sign-in-button" role="button" aria-pressed="true">Sign Out</a>
         </dd>
     </div>
 </div>

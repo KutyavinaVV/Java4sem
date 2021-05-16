@@ -6,6 +6,7 @@
 <body>
 <@script.script />
 <@navbar.navbar />
+<#import "/spring.ftl" as spring/>
 <div class="row">
     <div class="card col-sm-4" style="width: 18rem;">
         <img class="card-img-top" src="/images/avatar.jpg" alt="Card image cap">
@@ -16,7 +17,7 @@
     </div>
     <div class="card col-sm-8" style="width: 18rem;">
         <div class="card-body">
-            Для того, чтобы совершить запись <a href="/signin" class="sing_in">войдите в свой аккаунт</a>, или <a href="/signup"> зарегистрируйтесь</a>, если вы с нами впервый раз.
+            Для того, чтобы совершить запись <a href="<@spring.url "/signin"/>" class="sing_in">войдите в свой аккаунт</a>, или <a href="<@spring.url "/signup"/>"> зарегистрируйтесь</a>, если вы с нами впервый раз.
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@
 <#import "__scrirts.ftlh" as script/>
 <#import "tags/CarouselTag.ftlh" as carusel/>
 <#import "tags/NavbarTag.ftlh" as navbar>
+<#import "/spring.ftl" as spring/>
 <body>
 <@header.header />
 <@script.script />
@@ -32,12 +33,6 @@
         <ul class="col-sm-2">
             <#list appointments as appointment>
                 <li>${appointment.getFullName()} ${appointment.getDate()}${appointment.getTime()}</li>
-            <#--                <form action="${pageContext.request.contextPath}/capsule" method="post">-->
-            <#--                    <p><input type="image" src="${pageContext.request.contextPath}/images/trash.png" alt="ОК"></p>-->
-            <#--                    <input type="hidden" name="date" value="<c:out value="${a.getDate()}"/>">-->
-            <#--                    <input type="hidden" name="time" value="<c:out value="${a.getTime()}"/>">-->
-            <#--                    <input type="hidden" name="action" value="deleteApp"/>-->
-            <#--                </form>-->
             </#list>
         </ul>
         <dd class="col-sm-1">
@@ -54,7 +49,7 @@
             </div>
         </dd>
         <dd class="col-sm-2">
-            <a href="/logout" class="btn btn-secondary btn-lg active " style="width: 130px; height: 55px; margin: -4px 0 0 10px;" role="button" aria-pressed="true">Sign Out</a>
+            <a href="<@spring.url "/logout"/>" class="btn btn-secondary btn-lg active " style="width: 130px; height: 55px; margin: -4px 0 0 10px;" role="button" aria-pressed="true">Sign Out</a>
         </dd>
     </div>
 </div>

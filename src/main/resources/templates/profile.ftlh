@@ -2,6 +2,7 @@
 <#import "__scrirts.ftlh" as script/>
 <#import "tags/CarouselTag.ftlh" as carusel/>
 <#import "tags/NavbarTag.ftlh" as navbar>
+<#import "/spring.ftl" as spring/>
 <body>
 <@header.header />
 <@script.script />
@@ -49,7 +50,7 @@
             </div>
         </dd>
         <dd class="col-sm-2">
-            <a href="/logout" class="btn btn-secondary btn-lg active " style="width: 130px; height: 55px; margin: -4px 0 0 10px;" role="button" aria-pressed="true">Sign Out</a>
+            <a href="<@spring.url "/logout"/>" class="btn btn-secondary btn-lg active sign-in-button" role="button" aria-pressed="true">Sign Out</a>
         </dd>
     </div>
 </div>
@@ -87,7 +88,7 @@
                 </div>
 
             <div class="card-body">
-                <a href="/capsule/${capsule.getId()}"><h5 class="card-title">${capsule.getName()}</h5></a>
+                <a href="<@spring.url "/capsule/${capsule.getId()}"/>"><h5 class="card-title">${capsule.getName()}</h5></a>
             </div>
             <#list capsule.getProductList() as product>
                 <div class="card-body" id="${product.getId()}">

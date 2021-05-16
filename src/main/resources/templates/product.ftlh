@@ -44,9 +44,6 @@
             </div>
         </div>
     </#list>
-    <#if exception??>
-        <script>showMessage("${exception}")</script>
-    </#if>
 
     <script
             src="https://code.jquery.com/jquery-2.2.4.js"
