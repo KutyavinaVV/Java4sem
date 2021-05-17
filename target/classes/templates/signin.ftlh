@@ -2,6 +2,7 @@
 <#import "__scrirts.ftlh" as script/>
 <#import "tags/CarouselTag.ftlh" as carusel/>
 <#import "tags/NavbarTag.ftlh" as navbar>
+<#import "/spring.ftl" as spring/>
 <@header.header />
 <@script.script />
 <body>
@@ -25,7 +26,7 @@
                     <label class="form-check-label" for="exampleCheck1">Remember me</label>
                 </div>
                 <div class="btn_sing"><button type="submit" class="btn btn-primary">Submit</button>
-                    <small class="form-text text-muted"> <a href="/signup" class="sing_href">Зарегистрируйтесь</a>, если вы впервые на нашем сайте.</small> </div>
+                    <small class="form-text text-muted"> <a href="<@spring.url "/signup"/>" class="sing_href">Зарегистрируйтесь</a>, если вы впервые на нашем сайте.</small> </div>
             </div>
         </form>
     </div>

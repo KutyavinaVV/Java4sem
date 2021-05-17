@@ -2,6 +2,7 @@ package ru.kpfu.itis.kutyavina.styleweb.logging;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,16 @@ public class LoggingAspect {
     @Autowired
     private Logger logger;
 
-
     @Pointcut("@annotation(Logging)")
     public void pointCutMethods() {
+    }
+
+    @AfterThrowing(
+            pointcut = "execution(* ru.kpfu..*(..))",
+            throwing= "error")
+    public void logMethodCall(JoinPoint joinPoint, Throwable error) throws Throwable {
+        String method = joinPoint.getSignature().getName() + " " + error.getMessage() + " " + error;
+        logger.log(Level.WARNING, method);
     }
 
     @After("pointCutMethods()")
