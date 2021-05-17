@@ -72,15 +72,15 @@ public class AppointmentService {
         return answerTime;
     }
 
-    public void addAppointment(AppointmentForm appointmentForm, Long userId) {
+    public Appointment addAppointment(AppointmentForm appointmentForm, Long userId) {
         User user = userService.findUser(userId);
         System.out.println(apiService.checkPhone(appointmentForm.getPhone()));
-        appointmentRepository.save(
-                Appointment.builder().client(user)
+        Appointment appointment = Appointment.builder().client(user)
                 .name(appointmentForm.getName())
                 .date(appointmentForm.getDate())
-                .time(appointmentForm.getTime()).build()
-        );
+                .time(appointmentForm.getTime()).build();
+        appointmentRepository.save(appointment);
+        return appointment;
     }
 
     public void removeAppointment(Long id) {

@@ -20,6 +20,9 @@ src/main/webapp
 *.iml
 *.ipr
 
+src/main/resources/spring.log
+src/main/resources/spring.log.2021-05-17.0.gz
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/

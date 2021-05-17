@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import ru.kpfu.itis.kutyavina.styleweb.dto.AppointmentForm;
+import ru.kpfu.itis.kutyavina.styleweb.models.Appointment;
 import ru.kpfu.itis.kutyavina.styleweb.security.details.UserDetailsImpl;
 import ru.kpfu.itis.kutyavina.styleweb.servise.AppointmentService;
+import ru.kpfu.itis.kutyavina.styleweb.servise.MailService;
 import ru.kpfu.itis.kutyavina.styleweb.servise.TimeService;
 
 @Controller
@@ -20,6 +22,9 @@ public class AboutController {
 
     @Autowired
     AppointmentService appointmentService;
+
+    @Autowired
+    MailService mailService;
 
     @GetMapping("/about")
     public String getAbout(ModelMap modelMap) {
@@ -42,7 +47,8 @@ public class AboutController {
 
     @PostMapping("/about/add")
     public String addAppointment(AppointmentForm appointmentForm,  @AuthenticationPrincipal UserDetailsImpl userDetails, ModelMap modelMap) {
-        appointmentService.addAppointment(appointmentForm, userDetails.getId());
+        Appointment appointment = appointmentService.addAppointment(appointmentForm, userDetails.getId());
+        mailService.sendUserMail(userDetails, appointment);
         modelMap.put("notification", "Запись была успешно создана");
         return "redirect:/profile";
     }
