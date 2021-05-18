@@ -9,10 +9,10 @@
 <@navbar.navbar />
 <div class="profile_info">
     <div class="row">
-        <dt class="col-sm-1"> Имя <br> <br>
+        <dt class="col-sm-1"> <@spring.message "name"/> <br> <br>
             <div class="dropdown update">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink20" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    update
+                    <@spring.message "edit"/>
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink20">
@@ -24,12 +24,12 @@
         </dt>
         <dd class="col-sm-1">${user.getUsername()}</dd>
 
-        <dt class="col-sm-1">Email</dt>
+        <dt class="col-sm-1"><@spring.message "email"/></dt>
         <dd class="col-sm-2">
             <p>${user.getEmail()}</p>
         </dd>
 
-        <dt class="col-sm-2">Мои записи</dt>
+        <dt class="col-sm-2"><@spring.message "appointment"/></dt>
         <ul class="col-sm-2">
             <#list appointments as appointment>
                 <li>${appointment.getFullName()} ${appointment.getDate()}${appointment.getTime()}</li>
@@ -38,7 +38,7 @@
         <dd class="col-sm-1">
             <div class="dropdown update">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    delete
+                    <@spring.message "delete"/>
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
@@ -65,7 +65,7 @@
                 <li class="list-group-item">${product.getComposition()}</li>
             </ul>
             <div class="card-body">
-                <a href="${product.getLink()}" class="card-link">Ссылка на магазин</a>
+                <a href="${product.getLink()}" class="card-link"><@spring.message "link"/></a>
                 <#if user??>
                     <div class="dropdown">
                         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

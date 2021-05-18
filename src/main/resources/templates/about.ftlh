@@ -11,7 +11,7 @@
     <div class="card col-sm-4" style="width: 18rem;">
         <img class="card-img-top" src="/images/avatar.jpg" alt="Card image cap">
         <div class="card-body">
-            <h5 class="card-title">Диана Милканова</h5>
+            <h5 class="card-title"><@spring.message "name2"/></h5>
             <p class="card-text">описание которого нет но которое здесь  точно должно быть</p>
         </div>
     </div>
@@ -23,32 +23,32 @@
     <div class="card col-sm-8" style="width: 18rem;">
         <div class="card-body">
             <form id="timik">
-                <h5 class="card-title">Выберите услугу:</h5>
+                <h5 class="card-title"><@spring.message "service"/></h5>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="a" value="cons30" id="defaultCheck1">
                     <label class="form-check-label" for="defaultCheck1">
-                        Консультация (30 минут)
+                        <@spring.message "cons30"/>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="a" value="cons60" id="defaultCheck2">
                     <label class="form-check-label" for="defaultCheck2">
-                        Консультация (1 час)
+                        <@spring.message "cons60"/>
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input"  name="a" type="radio" value="analysis" id="defaultCheck3">
                     <label class="form-check-label" for="defaultCheck4">
-                        Разбор гардероба (3 часа)
+                        <@spring.message "analysis"/>
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" name="a" type="radio" value="newG" id="defaultCheck4">
                     <label class="form-check-label" for="defaultCheck4">
-                        Подбор нового гардероба (целый день)
+                        <@spring.message "newG"/>
                     </label>
                 </div>
                 <input type="date" class="form-control" id="date" max="${maxDate}" min="${today}" name="date" placeholder="Дата" required>
-                <button type="submit" id="#checkData" class="btn btn-primary">Проверить дату </button>
+                <button type="submit" id="#checkData" class="btn btn-primary"><@spring.message "check"/> </button>
                 <input type="hidden" name="action" value="data"/>
             </form>
             <br>
@@ -56,19 +56,19 @@
                 <div class="timeSpace"></div>
                 <div id="myDiv" class="answer_list" >
                     <div class="form-group, form_sing" >
-                        <label for="FIO">ФИО</label>
+                        <label for="FIO"><@spring.message "FIO"/></label>
                         <input type="text" name="FIO" class="form-control" id="FIO" placeholder="Enter name">
                     </div>
                     <div class="form-group, form_sing" >
-                        <label for="tel">Номер телефона</label>
+                        <label for="tel"><@spring.message "number"/></label>
                         <input type="text" name="tel" class="form-control" id="tel" placeholder="Номер телефона">
                     </div>
                     <input type="hidden" value="" name='date' id="dataInForm" required>
                     <input type="hidden" value="" name='time' id="time" required>
                     <input type="hidden" value="" name='name' id="name" required>
                     <input type="checkbox" required class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Согласен получить звонок от администратора</label>
-                    <div class="btn_sing"><button type="submit" id="ok" class="btn btn-primary"  >Submit</button> </div>
+                    <label class="form-check-label" for="exampleCheck1"><@spring.message "agree"/></label>
+                    <div class="btn_sing"><button type="submit" id="ok" class="btn btn-primary"  ><@spring.message "submit"/></button> </div>
                 </div>
             </form>
         </div>
