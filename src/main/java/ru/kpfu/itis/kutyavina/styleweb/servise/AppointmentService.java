@@ -34,7 +34,6 @@ public class AppointmentService {
                 if (timeService.checkData(date)) {
                     ArrayList<String> timeList = AppointmentList.getTime();
                     List<String> timeB = getTimeList(appointmentRepository.findAllByDate(date));
-                    System.out.println(timeB);
                     for (String time : timeB) {
                         timeList.set(timeList.indexOf(time), null);
                     }

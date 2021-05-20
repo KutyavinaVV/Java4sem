@@ -10,7 +10,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findByType(String type);
 
-    @Query(value = "select  product.id as id, composition, description, link, " +
+    @Query(value = "select distinct product.id as id, composition, description, link, " +
             "product.name as name, path, type from product inner join product_capsule pc " +
             "on product.id = pc.product_id inner join сapsule с on с.id = pc.capsule_id " +
             "where user_id = ?1",

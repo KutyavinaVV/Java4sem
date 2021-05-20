@@ -21,7 +21,7 @@ src/main/webapp
 *.ipr
 
 src/main/resources/spring.log
-src/main/resources/spring.log.2021-05-17.0.gz
+src/main/resources/spring.log**
 
 ### NetBeans ###
 /nbproject/private/

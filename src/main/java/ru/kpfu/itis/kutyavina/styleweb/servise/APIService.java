@@ -4,11 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +23,7 @@ public class APIService {
         try {
             String postData = "[ \"" + email + "\" ]";
             URL object = new URL(URL_EMAIL);
-                HttpURLConnection con = (HttpURLConnection) object.openConnection();
+            HttpURLConnection con = (HttpURLConnection) object.openConnection();
             con.setDoInput(true);
             con.setRequestMethod("POST");
             con.setRequestProperty("Content-Type", "application/json");
@@ -52,11 +48,8 @@ public class APIService {
                 String answ = sb.toString();
                 int result = Integer.parseInt(Character.toString(answ.split("qc\":")[1].charAt(0)));
                 return ((result == 0) || (result == 4));
-            } else {
-                System.out.println(HttpResult);
             }
         } catch (IOException e) {
-            e.printStackTrace();
             logger.log(Level.SEVERE, "error with server", e );
         }
         return false;
@@ -96,26 +89,25 @@ public class APIService {
                 System.out.println(HttpResult);
             }
         } catch (IOException e) {
-            e.printStackTrace();
             logger.log(Level.SEVERE, "error with connection", e );
         }
         return false;
     }
 
-    public static void clothes(String query) {
-        query = query.replace(" ", "%20");
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://asos2.p.rapidapi.com/products/v2/list?store=US&offset=0&categoryId=0&limit=10&country=US&sort=freshness&q=" + query + "&currency=USD&sizeSchema=US&lang=en-US"))
-                .header("x-rapidapi-key", "4bbcc0eceemsh0d36cf5ca21eac7p163391jsn075cd14bbd18")
-                .header("x-rapidapi-host", "asos2.p.rapidapi.com")
-                .method("GET", HttpRequest.BodyPublishers.noBody())
-                .build();
-        HttpResponse<String> response = null;
-        try {
-            response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (IOException | InterruptedException e) {
-                e.printStackTrace();
-        }
-        System.out.println(response.body());
-    }
+//    public static void clothes(String query) {
+//        query = query.replace(" ", "%20");
+//        HttpRequest request = HttpRequest.newBuilder()
+//                .uri(URI.create("https://asos2.p.rapidapi.com/products/v2/list?store=US&offset=0&categoryId=0&limit=10&country=US&sort=freshness&q=" + query + "&currency=USD&sizeSchema=US&lang=en-US"))
+//                .header("x-rapidapi-key", "4bbcc0eceemsh0d36cf5ca21eac7p163391jsn075cd14bbd18")
+//                .header("x-rapidapi-host", "asos2.p.rapidapi.com")
+//                .method("GET", HttpRequest.BodyPublishers.noBody())
+//                .build();
+//        HttpResponse<String> response = null;
+//        try {
+//            response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+//        } catch (IOException | InterruptedException e) {
+//                e.printStackTrace();
+//        }
+//        System.out.println(response.body());
+//    }
 }

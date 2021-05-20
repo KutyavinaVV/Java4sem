@@ -32,7 +32,6 @@ public class CapsuleController {
     public String getCapsule(@PathVariable("id") Capsule capsule, ModelMap modelMap, @AuthenticationPrincipal UserDetailsImpl userDetails, HttpServletRequest request) {
         Long userId = userDetails.getId();
         appointmentService.removeUnNeeded(userId);
-        System.out.println(capsule.toString());
         modelMap.addAttribute("user", userDetails);
         modelMap.addAttribute("capsule", capsule);
         modelMap.addAttribute("appointments", appointmentService.getAllByUserId(userId));

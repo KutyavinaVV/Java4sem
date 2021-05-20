@@ -27,7 +27,7 @@ public class LoggingAspect {
     @AfterThrowing(
             pointcut = "execution(* ru.kpfu..*(..))",
             throwing= "error")
-    public void logMethodCall(JoinPoint joinPoint, Throwable error) throws Throwable {
+    public void logMethodCall(JoinPoint joinPoint, Throwable error) {
         String method = joinPoint.getSignature().getName() + " " + error.getMessage() + " " + error;
         logger.log(Level.WARNING, method);
     }
@@ -37,6 +37,6 @@ public class LoggingAspect {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String name = authentication.getName();
         String method = joinPoint.getSignature().getName() + " " + name;
-        logger.log(Level.WARNING, method);
+        logger.log(Level.INFO, method);
     }
 }

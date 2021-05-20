@@ -35,7 +35,7 @@ public class SignUpController {
         }
         catch (IllegalArgumentException ex) {
             model.put("error", ex.getMessage());
-            // logger.log(Level.SEVERE, "wrong parameters for sign up", ex );
+            logger.log(Level.SEVERE, "wrong parameters for sign up", ex );
             return "signup";
         }
         signUpService.SignUp(userForm);

@@ -33,7 +33,7 @@ public class TimeService{
             dateAsObj = sdf.parse(dateS);
         } catch (ParseException e) {
             logger.log(Level.SEVERE, "wrong date", e );
-            e.printStackTrace();
+            return "20.02.2022";
         }
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateAsObj);
@@ -51,6 +51,7 @@ public class TimeService{
             d = formatter.parse(dateInString);
         } catch (ParseException e) {
             logger.log(Level.SEVERE, "wrong date", e );
+            return false;
         }
         return dateNow.compareTo(d) < 0;
     }

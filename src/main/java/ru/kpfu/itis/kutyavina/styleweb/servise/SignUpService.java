@@ -25,7 +25,6 @@ public class SignUpService  {
     UsersRepository usersRepository;
 
     public void SignUp(UserForm userForm) {
-        System.out.println(userForm);
         User user = User.builder()
                 .email(userForm.getEmail())
                 .password(passwordEncoder.encode(userForm.getPassword()))

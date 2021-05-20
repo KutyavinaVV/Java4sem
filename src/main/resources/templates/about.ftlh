@@ -60,7 +60,7 @@
                         <input type="text" name="FIO" class="form-control" id="FIO" placeholder="Enter name">
                     </div>
                     <div class="form-group, form_sing" >
-                        <label for="tel"><@spring.message "number"/></label>
+                        <label for="tel">Номер телефона</label>
                         <input type="text" name="tel" class="form-control" id="tel" placeholder="Номер телефона">
                     </div>
                     <input type="hidden" value="" name='date' id="dataInForm" required>
